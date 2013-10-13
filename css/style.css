@@ -1,0 +1,44 @@
+body {
+    padding-top: 60px;
+    font-family: monaco, monospace;
+    text-transform: lowercase;
+}
+h1, h2 {
+    display: inline-block;
+    background: #fff;
+}
+h1 {
+    font-size: 30px
+}
+h2 {
+    font-size: 20px;
+}
+a {
+    background: #FFCC00;
+    color: #000;
+    text-decoration:none;
+}
+a:hover {
+    text-decoration:underline;
+}
+#right-outer {
+    padding-top:60px;
+    float:right;
+    padding-right:50px;
+}
+#right-inner {
+    background: #fff;
+}
+#left-outer {
+    padding-top: 80px;
+    float:left;
+    padding-left:50px;
+}
+#left-inner {
+    background: #fff;
+}
+#main {
+    text-align: center;
+    z-index: 99;
+    position:relative;
+}
