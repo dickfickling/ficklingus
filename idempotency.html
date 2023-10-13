@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Idempotency</title>
+</head>
+
+<body>
+  <style>
+    .letter {
+      display: inline-block;
+      padding: 8px;
+      color: black;
+      margin-top: 20px;
+      font-size: 60px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-weight: 600;
+      transition-property: all;
+      transition-duration: 200ms;
+      animation: gelatine 1s infinite;
+      text-shadow: 5px 5px 5px lightblue;
+    }
+
+    @keyframes gelatine {
+
+      from,
+      to {
+        transform: scale(1, 1) rotate3d(0, 1, 1, 20deg);
+      }
+
+      25% {
+        transform: translateY(-20px) scale(0.9, 1.1) rotate3d(0, 1, 1, 20deg);
+      }
+
+      50% {
+        transform: scale(1.1, 0.9) rotate3d(0, 1, 1, 20deg);
+      }
+
+      75% {
+        transform: scale(0.95, 1.05) rotate3d(0, 1, 1, 20deg);
+      }
+    }
+
+    .letter:hover {
+      text-shadow: 10px 10px 10px lightcoral;
+    }
+
+    .center {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+  <div class="center">
+    <div class="letter">I</div>
+    <div class="letter">D</div>
+    <div class="letter">E</div>
+    <div class="letter">M</div>
+    <div class="letter">P</div>
+    <div class="letter">O</div>
+    <div class="letter">T</div>
+    <div class="letter">E</div>
+    <div class="letter">N</div>
+    <div class="letter">C</div>
+    <div class="letter">Y</div>
+  </div>
+</body>
+
+</html>
