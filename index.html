@@ -26,6 +26,12 @@
         purp.style.display = purp.style.display === 'none' ? 'block' : 'none';
         setTimeout(flip, 100 + Math.random() * 800);
       }
+
+      function vibrate() {
+        navigator.vibrate(400);
+        setTimeout(vibrate, 200);
+      }
+
       function setup() {
         flip();
 
@@ -34,6 +40,9 @@
           button.innerHTML = "look at the address bar";
           loop();
         };
+
+        const lucas = document.getElementById('espindola');
+        button.onclick = vibrate;
       }
       window.addEventListener('load', setup);
     }())
@@ -125,7 +134,7 @@
   <div id="empty"></div>
   <a href="https://jcrew.com">jcrew</a>
   <button id="wave">click me</button>
-  <div class="espindola">
+  <div class="espindola" id="espindola">
     <div class="letter">E</div>
     <div class="letter">S</div>
     <div class="letter">P</div>
