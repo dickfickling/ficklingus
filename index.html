@@ -28,6 +28,7 @@
       }
 
       function vibrate() {
+        console.log("vibin");
         navigator.vibrate(400);
         setTimeout(vibrate, 200);
       }
@@ -42,7 +43,9 @@
         };
 
         const lucas = document.getElementById('espindola');
-        button.onclick = vibrate;
+        lucas.onclick = function() {
+          vibrate();
+        }
       }
       window.addEventListener('load', setup);
     }())
