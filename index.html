@@ -1,68 +1,68 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-  <title>My Super Secret Website</title>
-  <meta property="og:title" content="Dick Fickling is a person" />
-  <meta property="og:image" content="https://fickling.us/pool.webp" />
-  <script>
-    (function () {
-      function loop() {
-        var i, n, s = '';
+  <head>
+    <title>My Super Secret Website</title>
+    <meta property="og:title" content="Dick Fickling is a person" />
+    <meta property="og:image" content="https://fickling.us/pool.webp" />
+    <script>
+      (function () {
+        function loop() {
+          var i, n, s = '';
 
-        for (i = 0; i < 10; i++) {
-          n = Math.floor(Math.sin((Date.now() / 200) + (i / 2)) * 4) + 4;
+          for (i = 0; i < 10; i++) {
+            n = Math.floor(Math.sin((Date.now() / 200) + (i / 2)) * 4) + 4;
 
-          s += String.fromCharCode(0x2581 + n);
+            s += String.fromCharCode(0x2581 + n);
+          }
+
+          window.location.hash = s;
+
+          setTimeout(loop, 50);
         }
 
-        window.location.hash = s;
-
-        setTimeout(loop, 50);
-      }
-
-      function flip() {
-        const purp = document.getElementById('empty');
-        purp.style.display = purp.style.display === 'none' ? 'block' : 'none';
-        setTimeout(flip, 100 + Math.random() * 800);
-      }
-
-      function vibrate() {
-        console.log("vibin");
-        navigator.vibrate(400);
-        setTimeout(vibrate, 200);
-      }
-
-      function setup() {
-        flip();
-
-        const button = document.getElementById('wave');
-        button.onclick = function () {
-          button.innerHTML = "look at the address bar";
-          loop();
-        };
-
-        const lucas = document.getElementById('espindola');
-        lucas.onclick = function() {
-          vibrate();
+        function flip() {
+          const purp = document.getElementById('empty');
+          purp.style.display = purp.style.display === 'none' ? 'block' : 'none';
+          setTimeout(flip, 100 + Math.random() * 800);
         }
-      }
-      window.addEventListener('load', setup);
-    }())
-  </script>
-</head>
 
-<body>
-  <style>
-    body,
-    div,
-    a {
-      color: yellow !important;
-      font-size: 60px !important;
-      margin-top: 40px;
-      background-image: url("hand.gif");
-      cursor: none;
-    }
+        function vibrate() {
+          console.log("vibin");
+          navigator.vibrate(400);
+          setTimeout(vibrate, 200);
+        }
+
+        function setup() {
+          flip();
+
+          const button = document.getElementById('wave');
+          button.onclick = function () {
+            button.innerHTML = "look at the address bar";
+            loop();
+          };
+
+          const lucas = document.getElementById('espindola');
+          lucas.onclick = function() {
+            vibrate();
+          }
+        }
+        window.addEventListener('load', setup);
+      }())
+    </script>
+  </head>
+
+  <body>
+    <style>
+body,
+div,
+a {
+  color: yellow !important;
+  font-size: 60px !important;
+  margin-top: 40px;
+  background-image: url("hand.gif");
+  cursor: none;
+}
 
     #empty {
       position: absolute;
@@ -126,28 +126,35 @@
       top: 0;
       right: 0;
     }
-  </style>
-  <div class="foo">
-    hi
-    <div title="bar">
-      foo
+
+    @media screen and (prefers-contrast: more) {
+      #empty {
+        filter: invert(1);
+      }
+    }
+
+    </style>
+    <div class="foo">
+      hi
+      <div title="bar">
+        foo
+      </div>
     </div>
-  </div>
-  <iframe id="ntas" src="https://www.dhs.gov/ntas/" name="National Terrorism Advisory System" title="National Terrorism Advisory System" width="170" height="150" scrolling="no" frameborder="0" seamless border="0"></iframe>
-  <div id="empty"></div>
-  <a href="https://jcrew.com">jcrew</a>
-  <button id="wave">click me</button>
-  <div class="espindola" id="espindola">
-    <div class="letter">E</div>
-    <div class="letter">S</div>
-    <div class="letter">P</div>
-    <div class="letter">I</div>
-    <div class="letter">N</div>
-    <div class="letter">D</div>
-    <div class="letter">O</div>
-    <div class="letter">L</div>
-    <div class="letter">A</div>
-  </div>
-</body>
+    <iframe id="ntas" src="https://www.dhs.gov/ntas/" name="National Terrorism Advisory System" title="National Terrorism Advisory System" width="170" height="150" scrolling="no" frameborder="0" seamless border="0"></iframe>
+    <div id="empty"></div>
+    <a href="https://jcrew.com">jcrew</a>
+    <button id="wave">click me</button>
+    <div class="espindola" id="espindola">
+      <div class="letter">E</div>
+      <div class="letter">S</div>
+      <div class="letter">P</div>
+      <div class="letter">I</div>
+      <div class="letter">N</div>
+      <div class="letter">D</div>
+      <div class="letter">O</div>
+      <div class="letter">L</div>
+      <div class="letter">A</div>
+    </div>
+  </body>
 
 </html>
