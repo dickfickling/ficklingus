@@ -27,6 +27,12 @@
           setTimeout(flip, 100 + Math.random() * 800);
         }
 
+        function flipGs() {
+          const purp = document.body;
+          document.body.parentElement.style.filter = document.body.parentElement.style.filter ? null : "grayscale(1)";
+          setTimeout(flipGs, 100 + Math.random() * 800);
+        }
+
         function vibrate() {
           console.log("vibin");
           navigator.vibrate(400);
@@ -35,6 +41,7 @@
 
         function setup() {
           flip();
+          flipGs();
 
           const button = document.getElementById('wave');
           button.onclick = function () {
