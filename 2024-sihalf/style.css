@@ -1,0 +1,44 @@
+      body {
+        margin: 0;
+        padding: 0;
+        position: 'relative';
+      }
+      .container {
+        position: relative;
+        width: 50%;
+        margin: 0 auto;
+      }
+      .images {
+      }
+
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+      .download-link {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: white;
+        padding: 15px;
+        color: blue;
+      }
+      .email-link {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: white;
+        padding: 15px;
+        color: blue;
+      }
+      .fundraiser {
+        position: fixed;
+        z-index: 1000;
+        bottom: 0;
+        left: 0;
+        background-color: blue;
+        padding: 15px;
+        color: white;
+      }
+    
