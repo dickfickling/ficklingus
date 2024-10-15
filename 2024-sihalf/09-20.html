@@ -19,6 +19,7 @@
         img.alt = `DSC_${i}`;
         container.appendChild(img);
         const downloadLink = document.createElement('a');
+        downloadLink.id = `DSC_${i}.thumb.jpg`;
         downloadLink.classList.add('download-link');
         downloadLink.href = `${directory}/DSC_${i}.thumb.jpg`;
         downloadLink.download = `DSC_${i}.thumb.jpg`;
@@ -30,6 +31,10 @@
         emailLink.innerText = 'Email me if you want a full resolution version of this image';
         container.appendChild(emailLink);
         document.querySelector('.images').appendChild(container);
+      }
+
+      if (window.location.hash) {
+        document.getElementById(decodeURI(window.location.hash.substring(1))).scrollIntoView();
       }
     </script>
 </html>
