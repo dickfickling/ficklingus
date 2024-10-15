@@ -20,11 +20,11 @@
         img.alt = `DSC_${paddedNumber}`;
         container.appendChild(img);
         const downloadLink = document.createElement('a');
-        downloadLink.id = `DSC_${i}.thumb.jpg`;
+        downloadLink.id = `DSC_${paddedNumber}.thumb.jpg`;
         downloadLink.classList.add('download-link');
         downloadLink.href = `${directory}/DSC_${paddedNumber}.thumb.jpg`;
         downloadLink.download = `DSC_${paddedNumber}.thumb.jpg`;
-        downloadLink.innerText = `Download DSC_${i}.thumb.jpg`;
+        downloadLink.innerText = `Download DSC_${paddedNumber}.thumb.jpg`;
         container.appendChild(downloadLink);
         const emailLink = document.createElement('a');
         emailLink.classList.add('email-link');
