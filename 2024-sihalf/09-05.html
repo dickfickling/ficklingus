@@ -33,9 +33,12 @@
         document.querySelector('.images').appendChild(container);
       }
 
-      if (window.location.hash) {
-        document.getElementById(decodeURI(window.location.hash.substring(1))).scrollIntoView();
-      }
+      window.addEventListener('load', function () {
+        console.log("load");
+        if (window.location.hash) {
+          document.getElementById(decodeURI(window.location.hash.substring(1))).scrollIntoView();
+        }
+      });
     </script>
 </html>
 
