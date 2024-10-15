@@ -23,7 +23,7 @@
         downloadLink.classList.add('download-link');
         downloadLink.href = `${directory}/DSC_${i}.thumb.jpg`;
         downloadLink.download = `DSC_${i}.thumb.jpg`;
-        downloadLink.innerText = 'Download';
+        downloadLink.innerText = `Download DSC_${i}.thumb.jpg`;
         container.appendChild(downloadLink);
         const emailLink = document.createElement('a');
         emailLink.classList.add('email-link');
