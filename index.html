@@ -27,6 +27,12 @@
           setTimeout(flip, 100 + Math.random() * 800);
         }
 
+        function flipMusic() {
+          const spotify = document.getElementById('spotify');
+          spotify.style.display = spotify.style.display === 'none' ? 'block' : 'none';
+          setTimeout(flipMusic, 100 + Math.random() * 1600);
+        }
+
         function flipGs() {
           const purp = document.body;
           document.body.parentElement.style.filter = document.body.parentElement.style.filter ? null : "grayscale(1)";
@@ -42,6 +48,7 @@
         function setup() {
           flip();
           flipGs();
+          flipMusic();
 
           const button = document.getElementById('wave');
           button.onclick = function () {
@@ -134,6 +141,22 @@ a {
       right: 0;
     }
 
+    #music {
+      position: absolute;
+      bottom: 0px;
+      left: 20px;
+      width: 100%;
+      max-width:660px;
+    }
+
+    #spotify {
+      position: absolute;
+      bottom: 0px;
+      left: 20px;
+      width: 100%;
+      max-width:660px;
+    }
+
     @media screen and (prefers-contrast: more) {
       #empty {
         filter: invert(1);
@@ -151,6 +174,8 @@ a {
     <div id="empty"></div>
     <a href="https://jcrew.com">jcrew</a>
     <button id="wave">click me</button>
+    <iframe id="music" allow="autoplay *; encrypted-media *;" frameborder="0" height="250" style="overflow:hidden;background:transparent;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/album/yeah-feat-lil-jon-ludacris/386153476?i=386153478"></iframe>
+    <iframe id="spotify" style="border-radius:12px" src="https://open.spotify.com/embed/track/5rb9QrpfcKFHM1EUbSIurX?utm_source=generator&theme=0" height="252" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
     <div class="espindola" id="espindola">
       <div class="letter">E</div>
       <div class="letter">S</div>
