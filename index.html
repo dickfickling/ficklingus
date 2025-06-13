@@ -60,6 +60,16 @@
           lucas.onclick = function() {
             vibrate();
           }
+
+          const isOnDickDotEs = window.location.hostname === 'dick.es';
+
+          if (isOnDickDotEs) {
+            console.log("setting display to initial");
+            const sp = document.getElementById('spanish');
+            sp.style.display = 'initial';
+            sp.onclick = () => document.getElementById('hi').textContent = 'hola';
+
+          }
         }
         window.addEventListener('load', setup);
       }())
@@ -157,6 +167,19 @@ a {
       max-width:660px;
     }
 
+    #spanish {
+      display: none;
+      position: absolute;
+      top: 10px;
+      right: 50vw;
+      font-size: 30px;
+      color: red;
+      background-color: yellow;
+      border-radius: 10px;
+      padding: 10px;
+      cursor: pointer;
+    }
+
     @media screen and (prefers-contrast: more) {
       #empty {
         filter: invert(1);
@@ -165,7 +188,7 @@ a {
 
     </style>
     <div class="foo">
-      hi
+      <span id="hi">hi</span>
       <div title="bar">
         foo
       </div>
@@ -176,6 +199,8 @@ a {
     <button id="wave">click me</button>
     <br />
     <a id="edge" href="microsoft-edge-https://api.groundswell.io/v1/enduser/sso/clig9v0uv00003q9kcflvacp4">edge</a>
+    <br />
+    <button id="spanish">Now available in ESPAÑOL! Enable?</button>
     <iframe id="music" allow="autoplay *; encrypted-media *;" frameborder="0" height="250" style="overflow:hidden;background:transparent;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/album/yeah-feat-lil-jon-ludacris/386153476?i=386153478"></iframe>
     <iframe id="spotify" style="border-radius:12px" src="https://open.spotify.com/embed/track/5rb9QrpfcKFHM1EUbSIurX?utm_source=generator&theme=0" height="252" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
     <div class="espindola" id="espindola">
