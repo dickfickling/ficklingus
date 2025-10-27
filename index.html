@@ -67,7 +67,10 @@
             console.log("setting display to initial");
             const sp = document.getElementById('spanish');
             sp.style.display = 'initial';
-            sp.onclick = () => document.getElementById('hi').textContent = 'hola';
+            sp.onclick = () => {
+              document.getElementById('hi').textContent = 'hola';
+              document.getElementById('jcrew').setAttribute('href', 'https://jcrew.com/es/');
+            };
 
           }
         }
@@ -195,7 +198,7 @@ a {
     </div>
     <iframe id="ntas" src="https://www.dhs.gov/ntas/" name="National Terrorism Advisory System" title="National Terrorism Advisory System" width="170" height="150" scrolling="no" frameborder="0" seamless border="0"></iframe>
     <div id="empty"></div>
-    <a href="https://jcrew.com">jcrew</a>
+    <a id="jcrew" href="https://jcrew.com">jcrew</a>
     <button id="wave">click me</button>
     <br />
     <a id="edge" href="microsoft-edge-https://api.groundswell.io/v1/enduser/sso/clig9v0uv00003q9kcflvacp4">edge</a>
