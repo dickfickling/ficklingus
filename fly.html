@@ -254,6 +254,71 @@
         const fly = document.getElementById('fly');
         const margin = 50; // Keep fly away from edges
 
+        // Audio context for procedural sound generation
+        let audioContext;
+        let buzzOscillator;
+        let lfoOscillator;
+        let gainNode;
+        let lfoGain;
+        let isAudioInitialized = false;
+
+        function initAudio() {
+            if (isAudioInitialized) return;
+
+            // Create audio context
+            audioContext = new (window.AudioContext || window.webkitAudioContext)();
+
+            // Create the main buzz oscillator (this is the fly's wing beating sound)
+            buzzOscillator = audioContext.createOscillator();
+            buzzOscillator.type = 'sawtooth'; // Sawtooth gives a buzzy sound
+            buzzOscillator.frequency.value = 280; // Base frequency around 280 Hz (typical fly buzz)
+
+            // Create LFO (Low Frequency Oscillator) for vibrato effect
+            lfoOscillator = audioContext.createOscillator();
+            lfoOscillator.type = 'sine';
+            lfoOscillator.frequency.value = 6; // 6 Hz variation
+
+            // LFO gain to control how much the LFO affects the main frequency
+            lfoGain = audioContext.createGain();
+            lfoGain.gain.value = 15; // Frequency variation amount
+
+            // Main gain node for volume control
+            gainNode = audioContext.createGain();
+            gainNode.gain.value = 0.08; // Keep it quiet so it's not annoying
+
+            // Connect the LFO to modulate the buzz frequency
+            lfoOscillator.connect(lfoGain);
+            lfoGain.connect(buzzOscillator.frequency);
+
+            // Connect buzz oscillator to gain to speakers
+            buzzOscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+
+            // Start the oscillators
+            buzzOscillator.start();
+            lfoOscillator.start();
+
+            isAudioInitialized = true;
+        }
+
+        function varyBuzzSound() {
+            if (!isAudioInitialized) return;
+
+            // Randomly vary the buzz frequency (flies change their wing beat)
+            const baseFreq = 260 + Math.random() * 60; // Between 260-320 Hz
+            buzzOscillator.frequency.setTargetAtTime(baseFreq, audioContext.currentTime, 0.1);
+
+            // Vary the LFO speed occasionally
+            if (Math.random() < 0.3) {
+                const lfoSpeed = 4 + Math.random() * 6; // Between 4-10 Hz
+                lfoOscillator.frequency.setTargetAtTime(lfoSpeed, audioContext.currentTime, 0.1);
+            }
+
+            // Occasionally add a slight volume variation (fly getting closer/farther)
+            const volume = 0.06 + Math.random() * 0.04; // Between 0.06-0.1
+            gainNode.gain.setTargetAtTime(volume, audioContext.currentTime, 0.2);
+        }
+
         function getRandomPosition() {
             const maxX = window.innerWidth - margin;
             const maxY = window.innerHeight - margin;
@@ -273,10 +338,23 @@
             const rotation = Math.random() * 360;
             fly.style.transform = `rotate(${rotation}deg)`;
 
+            // Vary the buzz sound when fly moves
+            varyBuzzSound();
+
             // Random next movement time (between 0.5 and 2 seconds)
             const nextMove = Math.random() * 1500 + 500;
             setTimeout(moveFly, nextMove);
         }
+
+        // Initialize audio on first user interaction (browsers require this)
+        document.addEventListener('click', () => {
+            initAudio();
+        }, { once: true });
+
+        // Also try to init on any key press
+        document.addEventListener('keypress', () => {
+            initAudio();
+        }, { once: true });
 
         // Start the fly movement
         moveFly();
