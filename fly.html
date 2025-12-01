@@ -228,9 +228,38 @@
         .fly-legs.r1 { right: 3px; }
         .fly-legs.r2 { right: 6px; }
         .fly-legs.r3 { right: 9px; }
+
+        /* Audio prompt */
+        #audio-prompt {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px 40px;
+            border-radius: 10px;
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            cursor: pointer;
+            z-index: 1000;
+            transition: opacity 0.3s;
+        }
+
+        #audio-prompt:hover {
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+        .hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
     </style>
 </head>
 <body>
+    <!-- Audio prompt -->
+    <div id="audio-prompt">Click to enable sound 🔊</div>
+
     <!-- Clouds -->
     <div class="cloud cloud1"></div>
     <div class="cloud cloud2"></div>
@@ -284,7 +313,7 @@
 
             // Main gain node for volume control
             gainNode = audioContext.createGain();
-            gainNode.gain.value = 0.08; // Keep it quiet so it's not annoying
+            gainNode.gain.value = 0.15; // Increased volume so it's audible
 
             // Connect the LFO to modulate the buzz frequency
             lfoOscillator.connect(lfoGain);
@@ -315,7 +344,7 @@
             }
 
             // Occasionally add a slight volume variation (fly getting closer/farther)
-            const volume = 0.06 + Math.random() * 0.04; // Between 0.06-0.1
+            const volume = 0.12 + Math.random() * 0.08; // Between 0.12-0.20
             gainNode.gain.setTargetAtTime(volume, audioContext.currentTime, 0.2);
         }
 
@@ -347,13 +376,32 @@
         }
 
         // Initialize audio on first user interaction (browsers require this)
-        document.addEventListener('click', () => {
+        const audioPrompt = document.getElementById('audio-prompt');
+
+        function enableAudio() {
             initAudio();
+            audioPrompt.classList.add('hidden');
+            console.log('Audio initialized!', {
+                context: audioContext,
+                state: audioContext?.state,
+                buzzFreq: buzzOscillator?.frequency.value,
+                volume: gainNode?.gain.value
+            });
+        }
+
+        audioPrompt.addEventListener('click', enableAudio);
+
+        document.addEventListener('click', () => {
+            if (!isAudioInitialized) {
+                enableAudio();
+            }
         }, { once: true });
 
         // Also try to init on any key press
         document.addEventListener('keypress', () => {
-            initAudio();
+            if (!isAudioInitialized) {
+                enableAudio();
+            }
         }, { once: true });
 
         // Start the fly movement
